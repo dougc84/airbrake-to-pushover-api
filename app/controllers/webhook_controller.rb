@@ -6,11 +6,13 @@ class WebhookController < ApplicationController
     @user_token ||= ENV['PUSHOVER_USER_TOKEN']
     @api_key    ||= ENV['PUSHOVER_API_TOKEN']
     @timezone   ||= 'EST'
-    Pushover.notification title: pushover_title,
+    response = Pushover.notification title: pushover_title,
                           message: pushover_message,
                           user: @user_token,
                           token: @api_key,
                           sound: 'falling'
+    Rails.logger.fatal params
+    Rails.logger.fatal response
     render nothing: true
   end
 
