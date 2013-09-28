@@ -6,7 +6,12 @@ require "action_controller/railtie"
 require "action_mailer/railtie"
 # require "sprockets/railtie"
 require "rails/test_unit/railtie"
-require 'dotenv'
+begin
+  require "dotenv"
+rescue LoadError => e
+  #
+end
+
 if defined?(Dotenv)
   Dotenv.load
 end
