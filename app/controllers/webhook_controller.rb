@@ -1,4 +1,7 @@
 class WebhookController < ApplicationController
+  #
+  # curl -X POST -H 'content-type: application/json' -d @sample.json http://localhost:3000/send-to-pushover
+  # 
   def create
     @user_token ||= ENV['PUSHOVER_USER_TOKEN']
     @api_key    ||= ENV['PUSHOVER_API_TOKEN']
@@ -8,6 +11,7 @@ class WebhookController < ApplicationController
                           user: @user_token,
                           token: @api_key,
                           sound: 'falling'
+    render nothing: true
   end
 
   private
