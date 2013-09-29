@@ -10,3 +10,7 @@ gem 'pushover'
 group :development do
   gem 'dotenv'
 end
+
+group :production do
+  gem 'rails_12factor'
+end
