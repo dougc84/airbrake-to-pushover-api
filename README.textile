@@ -34,8 +34,10 @@ You will also need to configure the following environment variables on Heroku:
 
 Once all this is set up, you can test out that everything works by running the following in your terminal:
 
-@curl -X POST -H 'content-type: application/json' -d @sample.json \
-http://your-heroku-url/send-to-pushover@
+<pre>
+curl -X POST -H 'content-type: application/json' -d @sample.json \
+  http://your-heroku-url/send-to-pushover
+</pre>
 
 (where @your-heroku-url@ is the URL of your Heroku app, usually something like app-name.herokuapp.com)
 
