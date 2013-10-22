@@ -2,9 +2,7 @@ h1. Airbrake To Pushover Integration/API
 
 h2. About
 
-After switching from Errbit (OSS version of Airbrake) to a paid Airbrake plan,
-I noticed integration with Pushover was not available (as it is with Errbit).
-So, I wrote up this little app using Rails::API to push those requests to me.
+After switching from Errbit (OSS version of Airbrake) to a paid Airbrake plan, I noticed integration with Pushover was not available (as it is with Errbit). So, I wrote up this little app using Rails::API to push those requests to me.
 
 This application uses:
 
@@ -15,28 +13,17 @@ h2. Configuration and Deployment
 
 h3. Rails and Local
 
-The only local application configuration you may wish to do is setting the time
-zone in @application.rb@, or adjusting the Pushover linking configuration.
+The only local application configuration you may wish to do is setting the time zone in @application.rb@, or adjusting the Pushover linking configuration.
 
-When you receive a push from Pushover, it will include a URL which, by default,
-will take you to a page on the app displaying all the details Airbrake sends via
-their webhook.  If you wish to point this somewhere else, change the url option
-in @WebhookController@, or, if you want to disable this altogether, remove that
-option in @WebhookController@ and the corresponding show route in @routes.rb@.
+When you receive a push from Pushover, it will include a URL which, by default, will take you to a page on the app displaying all the details Airbrake sends via their webhook.  If you wish to point this somewhere else, change the url option in @WebhookController@, or, if you want to disable this altogether, remove that option in @WebhookController@ and the corresponding show route in @routes.rb@.
 
-You could, optionally, set up a different secret token in
-@config/initializers/secret_token.rb@, but since there is no user access, this
-is unnecessary.
+You could, optionally, set up a different secret token in @config/initializers/secret_token.rb@, but since there is no user access, this is unnecessary.
 
 h3. Heroku
 
-This application is designed for deployment on Heroku.  Some additional steps
-may need to be taken if you wish to deploy this on another architecture.
-You will only need the basic Heroku Postgres add-on.  The free version is
-more than enough.
+This application is designed for deployment on Heroku.  Some additional steps may need to be taken if you wish to deploy this on another architecture.  You will only need the basic Heroku Postgres add-on.  The free version is more than enough.
 
-When deploying, you will probably notice an error regarding asset compilation.
-This is normal.  There are no assets to compile.
+When deploying, you will probably notice an error regarding asset compilation.  This is normal.  There are no assets to compile.
 
 After deploying, be sure to run @heroku run rake db:migrate@.
 
@@ -45,28 +32,22 @@ You will also need to configure the following environment variables on Heroku:
 * @PUSHOVER_API_TOKEN@ - the API token that Pushover gives you
 * @PUSHOVER_USER_TOKEN@ - the User token that Pushover gives you
 
-Once all this is set up, you can test out that everything works by running the
-following in your terminal:
+Once all this is set up, you can test out that everything works by running the following in your terminal:
 
-@curl -X POST -H 'content-type: application/json' -d @sample.json http://your-heroku-url/send-to-pushover@
+@curl -X POST -H 'content-type: application/json' -d @sample.json \
+http://your-heroku-url/send-to-pushover@
 
-(where @your-heroku-url@ is the URL of your Heroku app, usually something like
-app-name.herokuapp.com)
+(where @your-heroku-url@ is the URL of your Heroku app, usually something like app-name.herokuapp.com)
 
 h3. Airbrake
 
-Finally, to connect everything in to Airbrake, go to whatever project you wish to
-add this feature to, and go to Project Settings.  Click integrations.  Then,
-under Webhook Integration, add the following URL:
+Finally, to connect everything in to Airbrake, go to whatever project you wish to add this feature to, and go to Project Settings.  Click integrations.  Then, under Webhook Integration, add the following URL:
 
 @http://your-heroku-url/send-to-heroku@
 
-(where, again, @your-heroku-url@ is the URL of your Heroku app, usually something
-like app-name.herokuapp.com)
+(where, again, @your-heroku-url@ is the URL of your Heroku app, usually something like app-name.herokuapp.com)
 
-Make sure "active" is checked, and hit save.  Send a test exception from Airbrake,
-and if everything goes well, you should receive a notification within a minute
-or two from Airbrake!
+Make sure "active" is checked, and hit save.  Send a test exception from Airbrake, and if everything goes well, you should receive a notification within a minute or two from Airbrake!
 
 h2. Development and Conventions
 
@@ -85,16 +66,10 @@ These are all soft requirements.
 
 h2. Contribution
 
-If you wish to contribute a feature, add tests, fix something that's broken,
-etc., please fork this app, make your changes on a new branch, and submit a
-pull request.
+If you wish to contribute a feature, add tests, fix something that's broken, etc., please fork this app, make your changes on a new branch, and submit a pull request.
 
-Finally, remember to use common sense when submitting a new feature.  If it's
-not a feature that would be used by anyone except you, include that in your
-PR, and I'll add a link to your repo in this readme.
+Finally, remember to use common sense when submitting a new feature.  If it's not a feature that would be used by anyone except you, include that in your PR, and I'll add a link to your repo in this readme.
 
 h2. Author and Licensing
 
-Written in completion by Doug Clark (Github: dougc84).  Distributed under
-GPLv3 license.  It is requested that, if this application is distributed,
-this paragraph is kept intact, but may be appended to.
+Written in completion by Doug Clark (Github: dougc84).  Distributed under GPLv3 license.  It is requested that, if this application is distributed, this paragraph is kept intact, but may be appended to.
