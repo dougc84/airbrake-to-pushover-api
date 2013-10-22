@@ -93,7 +93,8 @@ Finally, remember to use common sense when submitting a new feature.  If it's
 not a feature that would be used by anyone except you, include that in your
 PR, and I'll add a link to your repo in this readme.
 
-h2. Author
+h2. Author and Licensing
 
-Written in completion by Doug Clark (Github: dougc84).  If you distribute
-this app, please keep this paragraph intact.
+Written in completion by Doug Clark (Github: dougc84).  Distributed under
+GPLv3 license.  It is requested that, if this application is distributed,
+this paragraph is kept intact, but may be appended to.
