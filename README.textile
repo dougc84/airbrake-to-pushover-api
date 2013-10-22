@@ -62,7 +62,7 @@ If you wish to submit a Pull Request, please use the following conventions:
 * Use HEREDOC syntax for extra long strings
 * Do not use I18n, simply for performance reasons (one less file to load)
 * Use of && and || is preferred over and/or, but not discouraged
-* Use @self.method# when adding a single class method, @class << self@ otherwise
+* Use @self.method@ when adding a single class method, @class << self@ otherwise
 
 These are all soft requirements.
 
