@@ -24,7 +24,6 @@ Bundler.require(:default, Rails.env)
 module AirbrakeToPushoverApi
   class Application < Rails::Application
     config.assets.enabled = false
-    config.logger = Logger.new(STDOUT)
     config.time_zone = 'Eastern Time (US & Canada)'
   end
 end
