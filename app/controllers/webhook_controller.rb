@@ -3,45 +3,38 @@ class WebhookController < ApplicationController
   # curl -X POST -H 'content-type: application/json' -d @sample.json http://localhost:3000/send-to-pushover
   # 
   def create
+    history = History.new
+    history.params = params
+    history.save
+
     @user_token ||= ENV['PUSHOVER_USER_TOKEN']
     @api_key    ||= ENV['PUSHOVER_API_TOKEN']
-    @timezone   ||= 'EST'
-    response = Pushover.notification title: pushover_title,
-                          message: pushover_message,
+
+    Pushover.notification title: history.title,
+                          message: pushover_message(history),
                           user: @user_token,
                           token: @api_key,
-                          sound: 'falling'
-    Rails.logger.fatal params
-    Rails.logger.fatal response
+                          sound: 'falling',
+                          url: history_url(history.sid)
+
     render nothing: true
+  end
+
+  def show
+    @history = History.where(sid: params[:id])
+    render
   end
 
   private
 
-  def pushover_title
-    "#{project_name} (#{environment})"
-  end
-
-  def pushover_message
-    "An error has occurred: #{error_message} (last at #{last_occurrence}, #{times_occurred_string})"
+  def pushover_message(history)
+    message = <<-MESSAGE.squish
+      An error has occurred: #{history.message} (last at #{history.last_occurrence_string},
+      occurred #{history.times_occurred} #{'time'.pluralize(history.times_occurred)}
+    MESSAGE
   end
 
   def pushover_link
     nil
-  end
-
-  def environment;      params[:error][:environment]; end
-  def error_file;       params[:error][:file]; end
-  def error_message;    params[:error][:error_message]; end
-  def last_occurrence
-    Time.zone.
-      parse(params[:error][:last_occurred_at]).
-      in_time_zone(@timezone).
-      strftime("%m/%d/%Y %I:%M%p")
-  end
-  def project_name;     params[:error][:project][:name]; end
-  def times_occurred;   params[:error][:times_occurred]; end
-  def times_occurred_string
-    "occurred #{times_occurred} #{ 'time'.pluralize(times_occurred.to_i) }"
   end
 end

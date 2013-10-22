@@ -1,11 +1,12 @@
 require File.expand_path('../boot', __FILE__)
 
 # Pick the frameworks you want:
-# require "active_record/railtie"
+require "active_record/railtie"
 require "action_controller/railtie"
 require "action_mailer/railtie"
 # require "sprockets/railtie"
 require "rails/test_unit/railtie"
+
 begin
   require "dotenv"
 rescue LoadError => e
@@ -23,5 +24,7 @@ Bundler.require(:default, Rails.env)
 module AirbrakeToPushoverApi
   class Application < Rails::Application
     config.assets.enabled = false
+    config.logger = Logger.new(STDOUT)
+    config.time_zone = 'Eastern Time (US & Canada)'
   end
 end

@@ -1,0 +1,33 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/Fixtures.html
+
+one:
+  error_id: 1
+  error_message: MyString
+  error_class: MyString
+  file: MyString
+  line_number: MyString
+  project_id: MyString
+  project_name: MyString
+  last_notice_id: MyString
+  last_notice_request_url: MyString
+  last_notice_backtrace: MyText
+  environment: MyString
+  first_occurred_at: MyString
+  last_occurred_at: MyString
+  times_occurred: 1
+
+two:
+  error_id: 1
+  error_message: MyString
+  error_class: MyString
+  file: MyString
+  line_number: MyString
+  project_id: MyString
+  project_name: MyString
+  last_notice_id: MyString
+  last_notice_request_url: MyString
+  last_notice_backtrace: MyText
+  environment: MyString
+  first_occurred_at: MyString
+  last_occurred_at: MyString
+  times_occurred: 1

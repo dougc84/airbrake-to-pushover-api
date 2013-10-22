@@ -1,0 +1,13 @@
+development:
+  adapter: postgresql
+  database: airbrake_to_pushover_api_development
+  username: doug
+  password: 
+  host: localhost
+
+test:
+  adapter: postgresql
+  database: airbrake_to_pushover_api_test
+  username: doug
+  password: 
+  host: localhost
