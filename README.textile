@@ -51,6 +51,14 @@ Finally, to connect everything in to Airbrake, go to whatever project you wish t
 
 Make sure "active" is checked, and hit save.  Send a test exception from Airbrake, and if everything goes well, you should receive a notification within a minute or two from Airbrake!
 
+h3. Airbrake Error Logging
+
+Since this assumes you're already using Airbrake (I mean, why else would you use this?), you can set up error notifications on Airbrake simply by adding your Airbrake API key to a config value on Heroku:
+
+@heroku config:set AIRBRAKE_API_KEY=your-airbrake-key@
+
+(where @your-airbrake-key@ is the key provided to you when adding a new app to your Airbrake instance)
+
 h2. Development and Conventions
 
 If you wish to submit a Pull Request, please use the following conventions:
