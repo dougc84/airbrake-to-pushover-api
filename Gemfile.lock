@@ -25,6 +25,9 @@ GEM
       multi_json (~> 1.3)
       thread_safe (~> 0.1)
       tzinfo (~> 0.3.37)
+    airbrake (3.1.14)
+      builder
+      json
     arel (4.0.0)
     atomic (1.1.14)
     bini (0.7.0)
@@ -39,6 +42,7 @@ GEM
       multi_json (~> 1.0)
       multi_xml (>= 0.5.2)
     i18n (0.6.5)
+    json (1.8.1)
     mail (2.5.4)
       mime-types (~> 1.16)
       treetop (~> 1.4.8)
@@ -106,6 +110,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  airbrake
   dotenv
   pg
   pushover

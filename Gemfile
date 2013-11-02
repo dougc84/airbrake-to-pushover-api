@@ -7,6 +7,7 @@ gem 'rails', '4.0.0'
 gem 'rails-api'
 gem 'thin'
 gem 'pushover'
+gem 'airbrake'
 
 group :development do
   gem 'dotenv'
