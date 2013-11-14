@@ -11,14 +11,13 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131022022251) do
+ActiveRecord::Schema.define(version: 20131114035042) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
   create_table "histories", force: true do |t|
     t.string   "error_id"
-    t.string   "message"
     t.string   "error_class"
     t.string   "file"
     t.integer  "line_number"
@@ -35,6 +34,7 @@ ActiveRecord::Schema.define(version: 20131022022251) do
     t.string   "sid"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "message"
   end
 
   add_index "histories", ["sid"], name: "index_histories_on_sid", using: :btree
